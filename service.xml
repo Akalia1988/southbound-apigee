@@ -1,0 +1,22 @@
+<TargetEndpoint name="default">
+  <HTTPTargetConnection>
+    <URL>http://my-southbound-api.com</URL>
+  </HTTPTargetConnection>
+</TargetEndpoint>
+
+<RouteRule name="default">
+  <TargetEndpoint>default</TargetEndpoint>
+  <Condition>(proxy.pathsuffix MatchesPath "/{proxy.pathsuffix}")</Condition>
+</RouteRule>
+
+<JSONToXML name="ConvertJSONToXML">
+  <DisplayName>Convert JSON to XML</DisplayName>
+  <Options>
+    <DocumentSourceType>JSON</DocumentSourceType>
+  </Options>
+</JSONToXML>
+
+<VerifyAPIKey name="VerifyAPIKey">
+  <APIKey ref="request.queryparam.apikey" />
+</VerifyAPIKey>
+
