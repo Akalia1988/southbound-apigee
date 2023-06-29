@@ -1,0 +1,9 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['login', '-u', 'oauth2accesstoken', '-p', '${_ARTIFACT_REGISTRY_TOKEN}', 'us-central1-docker.pkg.dev']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['pull', 'us-central1-docker.pkg.dev/arsh-sandbox/test-arsh/nginx']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['tag', 'us-central1-docker.pkg.dev/my-project/my-image:latest', 'gcr.io/$PROJECT_ID/my-image:latest']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/nginx:latest']
