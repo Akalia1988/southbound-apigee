@@ -83,6 +83,14 @@ module "gke" {
   ]
 }
 
- provisioner "local-exec" {
+
+resource "null_resource" "trigger_build" {
+  provisioner "local-exec" {
     command = "gcloud builds submit --config=cloudbuild.yaml ."
   }
+
+  depends_on = [
+    module.gke
+  ]
+}
+

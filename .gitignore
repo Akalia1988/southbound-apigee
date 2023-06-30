@@ -1,0 +1,25 @@
+
+# Ignore Terraform state files
+terraform.tfstate
+terraform.tfstate.backup
+
+# Ignore Terraform plugins and other files
+.terraform/
+
+# Ignore variable files
+*.tfvars
+
+# Ignore environment variables
+.env
+
+# Ignore log files
+*.log
+
+# Ignore compiled Python files
+*.pyc
+__pycache__/
+
+# Ignore macOS metadata files
+*.DS_Store
+
+
